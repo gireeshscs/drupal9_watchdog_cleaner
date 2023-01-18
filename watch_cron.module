@@ -1,0 +1,18 @@
+<?php
+/*
+ * @file
+ * code for Watch cron module
+*/
+
+
+/**
+ * Implements hook_cron().
+ */
+function watch_cron_cron() {
+
+  $database = \Drupal::database();
+  $query = $database->query('TRUNCATE TABLE {watchdog}');
+  $result1 = $query->execute();
+
+module_set_weight('watch_cron', 100);
+}
